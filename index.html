@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auto-École Team Scarano | Permis de conduire Évreux</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        /* --- RESET & BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; line-height: 1.6; color: #333; scroll-behavior: smooth; }
+        a { text-decoration: none; color: inherit; }
+        ul { list-style: none; }
+        
+        /* --- COULEURS ET VARIABLES --- */
+        :root {
+            --primary: #2563eb; 
+            --secondary: #333333; 
+            --accent: #d00000; 
+            --light: #f3f4f6;
+            --white: #ffffff;
+            --scarano-green: #008000; 
+        }
+
+        /* --- HEADER --- */
+        header { background: var(--white); box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: sticky; top: 0; z-index: 1000; }
+        nav { display: flex; justify-content: space-between; align-items: center; padding: 1rem 5%; max-width: 1200px; margin: 0 auto; }
+        .logo-container { display: flex; align-items: center; }
+        .logo-img { height: 50px; margin-right: 15px; } 
+        .logo-text { font-size: 1.5rem; font-weight: bold; color: var(--secondary); }
+
+        .nav-links { display: flex; gap: 25px; }
+        .nav-links a { font-weight: 500; padding: 5px 0; transition: color 0.3s; }
+        .nav-links a:hover { color: var(--accent); border-bottom: 2px solid var(--accent); }
+        .btn-contact { background: var(--primary); color: var(--white); padding: 8px 18px; border-radius: 5px; transition: background 0.3s; font-weight: bold; }
+        .btn-contact:hover { background: var(--secondary); color: var(--white); }
+
+        /* --- HERO SECTION (CORRECTION DU NOM DU FICHIER DE FOND) --- */
+        .hero {
+            /* ESSAI 1: fond.jpg (le plus probable) */
+            background: linear-gradient(rgba(0,0,0,0.65), rgba(0,0,0,0.65)), url('fond.png');
+            background-size: cover;
+            background-position: center;
+            height: 90vh; 
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: var(--white);
+            padding: 0 20px;
+        }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 1rem; text-shadow: 2px 2px 6px rgba(0,0,0,0.7); }
+        .hero p { font-size: 1.4rem; margin-bottom: 3rem; max-width: 800px; font-weight: 400; text-shadow: 1px 1px 4px rgba(0,0,0,0.7); }
+        .cta-button { background: var(--scarano-green); color: var(--white); padding: 18px 35px; font-size: 1.2rem; border-radius: 50px; font-weight: bold; transition: transform 0.2s, background 0.3s; box-shadow: 0 6px 10px rgba(0,0,0,0.3); }
+        .cta-button:hover { background: var(--accent); transform: scale(1.05); }
+
+        /* --- SECTIONS GÉNÉRALES --- */
+        .section { padding: 5rem 5%; max-width: 1200px; margin: 0 auto; text-align: center; }
+        .section h2 { font-size: 2.5rem; margin-bottom: 3.5rem; color: var(--secondary); position: relative; }
+        .section h2::after { content: ''; position: absolute; left: 50%; bottom: -10px; transform: translateX(-50%); width: 80px; height: 4px; background: var(--accent); border-radius: 2px; }
+
+        /* --- FORFAITS PERMIS B --- */
+        .cards-container { display: flex; flex-wrap: wrap; justify-content: center; gap: 40px; margin-bottom: 60px; }
+        .card { 
+            background: var(--white); border: 2px solid var(--light); border-radius: 12px; padding: 2.5rem; 
+            width: 320px; box-shadow: 0 8px 15px rgba(0,0,0,0.1); transition: all 0.3s; 
+            display: flex; flex-direction: column; text-align: left;
+        }
+        .card:hover { transform: translateY(-7px); border-color: var(--scarano-green); }
+        .card h3 { margin-bottom: 1rem; color: var(--secondary); font-size: 1.8rem; text-align: center; border-bottom: 2px solid var(--light); padding-bottom: 10px; }
+        .price-details { margin-top: 1.5rem; text-align: center; }
+        .price { font-size: 1.5rem; font-weight: bold; color: var(--scarano-green); margin-bottom: 0.5rem; display: block; }
+        .price-sans-code { font-size: 1.1rem; font-weight: normal; color: var(--accent); display: block; }
+        
+        .features { text-align: left; margin-top: 2rem; }
+        .features li { margin-bottom: 10px; color: #555; display: flex; align-items: flex-start; font-size: 1rem;}
+        .features li i { color: var(--scarano-green); margin-right: 12px; font-size: 1.1rem; margin-top: 3px; }
+        .card-button { 
+            background: var(--primary); color: var(--white); padding: 10px; border-radius: 5px; 
+            text-align: center; margin-top: 20px; transition: background 0.3s;
+        }
+        .card-button:hover { background: var(--secondary); }
+
+        /* --- AUTRES FORMATIONS --- */
+        .other-formations-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; margin-top: 2rem; text-align: left; }
+        .formation-block {
+            padding: 30px; border-radius: 10px; background: var(--white); 
+            border: 1px solid #ddd; box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+            transition: box-shadow 0.3s;
+        }
+        .formation-block:hover { box-shadow: 0 8px 15px rgba(0,0,0,0.1); }
+        .formation-block h3 {
+            color: var(--secondary);
+            border-bottom: 3px solid var(--accent);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.6rem;
+            display: flex;
+            align-items: center;
+        }
+        .formation-block h3 i { margin-right: 15px; color: var(--accent); font-size: 1.8rem; }
+        .formation-details ul { margin-top: 15px; }
+        .formation-details ul li {
+            background: var(--light);
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+        }
+        .formation-details ul li i { color: var(--scarano-green); margin-right: 10px; }
+        .formation-contact { background: var(--primary); color: var(--white); text-align: center; padding: 10px; border-radius: 5px; display: block; margin-top: 20px; transition: background 0.3s;}
+        .formation-contact:hover { background: var(--secondary); }
+
+        /* --- TARIFS ET DOCUMENTS --- */
+        .prices-docs-section { background: var(--light); text-align: left;}
+        .pricing-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); gap: 50px; margin-top: 2rem; }
+        .admin-fees h3, .documents h3 { color: var(--secondary); margin-bottom: 1.5rem; border-bottom: 2px solid var(--primary); padding-bottom: 8px; }
+        .admin-fees ul, .documents ul { padding-left: 0; }
+        .admin-fees li { margin-bottom: 10px; font-size: 1rem; color: #555; }
+        .admin-fees li i { color: var(--accent); margin-right: 10px; }
+        .financing-info { padding: 20px; border: 1px dashed #ccc; border-radius: 8px; margin-top: 20px; background: var(--white); }
+        .financing-info p { margin-bottom: 10px; font-size: 0.95rem; }
+        .financing-info strong { color: var(--scarano-green); }
+
+        /* --- CONTACT --- */
+        .contact-container { display: flex; flex-wrap: wrap; gap: 40px; justify-content: center; text-align: left; }
+        .contact-info, .contact-form { flex: 1; min-width: 350px; }
+        .contact-info p i { margin-right: 10px; color: var(--accent); }
+        .hours-list li { margin-bottom: 8px; padding-bottom: 4px; display: flex; justify-content: space-between; font-size: 1rem; }
+        .hours-list strong { color: var(--secondary); min-width: 100px; }
+        
+        .contact-form h3 { color: var(--primary); margin-bottom: 1rem; }
+        .contact-form input, .contact-form textarea, .contact-form select { width: 100%; padding: 12px; margin-bottom: 18px; border: 1px solid #ccc; border-radius: 5px; font-size: 1rem; }
+        .contact-form button { background: var(--scarano-green); color: var(--white); border: none; padding: 12px 20px; cursor: pointer; border-radius: 5px; width: 100%; font-weight: bold; transition: background 0.3s; }
+        .contact-form button:hover { background: var(--accent); }
+
+        /* --- FOOTER --- */
+        footer { background: var(--secondary); color: var(--light); text-align: center; padding: 2rem; font-size: 0.9rem; }
+
+        @media (max-width: 900px) {
+            .hero h1 { font-size: 2.5rem; }
+            .hero p { font-size: 1.1rem; }
+            .pricing-grid { grid-template-columns: 1fr; }
+            .other-formations-container { grid-template-columns: 1fr; }
+            .nav-links { gap: 15px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <div class="logo-container">
+                <img src="logo.png" alt="Logo Team Scarano" class="logo-img">
+                <div class="logo-text">Auto-École Team Scarano</div>
+            </div>
+            <ul class="nav-links">
+                <li><a href="#accueil">Accueil</a></li>
+                <li><a href="#permis-b">Permis B</a></li>
+                <li><a href="#autres-formations">Autres Formations</a></li>
+                <li><a href="#tarifs-docs">Tarifs & Docs</a></li>
+                <li><a href="#contact" class="btn-contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section id="accueil" class="hero">
+        <h1>Votre réussite, notre priorité.</h1>
+        <p>Rejoignez la Team Scarano à Évreux pour votre Permis Auto, Moto, Remorque et Conduite Accompagnée. Des pros, un haut taux de réussite et un suivi personnalisé.</p>
+        <a href="#permis-b" class="cta-button">Découvrez nos formules B</a>
+    </section>
+
+    <section id="permis-b" class="section">
+        <h2>Nos Formules Complètes Permis B</h2>
+        <div class="cards-container">
+            
+            <div class="card">
+                <h3>Formule 20 Heures</h3>
+                <p style="text-align: center; color:#777;">Le forfait réglementaire</p>
+                <div class="price-details">
+                    <span class="price">1180€ (Code inclus)</span>
+                    <span class="price-sans-code">1130€ (Sans Code)</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Frais administratifs et constitution du dossier</li>
+                    <li><i class="fas fa-check-circle"></i> Tests Code illimités (Application Code'nGo)</li>
+                    <li><i class="fas fa-check-circle"></i> 20 leçons de conduite (Évaluation initiale offerte)</li>
+                    <li><i class="fas fa-check-circle"></i> 1 accompagnement à l'examen pratique</li>
+                </ul>
+                <a href="#contact" class="card-button">Choisir cette formule</a>
+            </div>
+
+            <div class="card">
+                <h3>Formule 25 Heures</h3>
+                <p style="text-align: center; color:#777;">La formule la plus recommandée</p>
+                <div class="price-details">
+                    <span class="price">1330€ (Code inclus)</span>
+                    <span class="price-sans-code">1280€ (Sans Code)</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Frais administratifs et constitution du dossier</li>
+                    <li><i class="fas fa-check-circle"></i> Tests Code illimités (Application Code'nGo)</li>
+                    <li><i class="fas fa-check-circle"></i> 25 leçons de conduite (5 heures supplémentaires)</li>
+                    <li><i class="fas fa-check-circle"></i> 1 accompagnement à l'examen pratique</li>
+                </ul>
+                <a href="#contact" class="card-button">Choisir cette formule</a>
+            </div>
+
+            <div class="card">
+                <h3>Formule 30 Heures</h3>
+                <p style="text-align: center; color:#777;">Pour une meilleure assurance</p>
+                <div class="price-details">
+                    <span class="price">1490€ (Code inclus)</span>
+                    <span class="price-sans-code">1440€ (Sans Code)</span>
+                </div>
+                <ul class="features">
+                    <li><i class="fas fa-check-circle"></i> Frais administratifs et constitution du dossier</li>
+                    <li><i class="fas fa-check-circle"></i> Tests Code illimités (Application Code'nGo)</li>
+                    <li><i class="fas fa-check-circle"></i> 30 leçons de conduite (10 heures supplémentaires)</li>
+                    <li><i class="fas fa-check-circle"></i> 1 accompagnement à l'examen pratique</li>
+                </ul>
+                <a href="#contact" class="card-button">Choisir cette formule</a>
+            </div>
+            
+        </div>
+        <p style="margin-top: 30px; font-style: italic;">Note : Forfait 35 heures disponible sur demande. Leçon supplémentaire : 47,00€/heure.</p>
+    </section>
+    
+    <section id="autres-formations" class="section prices-docs-section">
+        <h2>Permis Moto, AAC & Remorque</h2>
+        <div class="other-formations-container">
+            
+            <div class="formation-block">
+                <h3><i class="fas fa-user-friends"></i> Conduite Accompagnée (AAC)</h3>
+                <p>Démarrez la conduite **dès 15 ans** pour une expérience de conduite plus longue et sécurisée.</p>
+                <div class="formation-details">
+                    <p style="color: var(--scarano-green); font-weight: bold;">Les avantages :</p>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> Réduction de la période probatoire (2 ans au lieu de 3).</li>
+                        <li><i class="fas fa-arrow-right"></i> Taux de réussite à l'examen supérieur.</li>
+                        <li><i class="fas fa-arrow-right"></i> Passage de l'examen pratique dès 17 ans et demi.</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="formation-contact">Détails de la formule AAC</a>
+            </div>
+            
+            <div class="formation-block">
+                <h3><i class="fas fa-motorcycle"></i> Permis Moto (A2)</h3>
+                <p>Formation complète pour le permis moto intermédiaire (max. 35 kW), accessible **à partir de 18 ans**.</p>
+                <div class="formation-details">
+                    <p style="color: var(--scarano-green); font-weight: bold;">Inclus dans la formation :</p>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> Préparation à l'Épreuve Théorique Moto (ETM).</li>
+                        <li><i class="fas fa-arrow-right"></i> Cours sur plateau (maniabilité lente et rapide).</li>
+                        <li><i class="fas fa-arrow-right"></i> Leçons de conduite en circulation.</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="formation-contact">Renseignements Permis Moto</a>
+            </div>
+            
+            <div class="formation-block">
+                <h3><i class="fas fa-truck-trailer"></i> Permis Remorque (B96 / BE)</h3>
+                <p>Formation indispensable pour la conduite de remorques (caravanes, vans à chevaux, etc.).</p>
+                <div class="formation-details">
+                    <p style="color: var(--scarano-green); font-weight: bold;">Choisissez votre option :</p>
+                    <ul>
+                        <li><i class="fas fa-arrow-right"></i> **B96 (7h) :** PTRA entre 3500 kg et 4250 kg (simple formation).</li>
+                        <li><i class="fas fa-arrow-right"></i> **Permis BE :** PTRA supérieur à 4250 kg (examen requis).</li>
+                        <li><i class="fas fa-arrow-right"></i> Formation rapide et personnalisée.</li>
+                    </ul>
+                </div>
+                <a href="#contact" class="formation-contact">Réserver votre formation B96/BE</a>
+            </div>
+
+        </div>
+    </section>
+    
+    <section id="tarifs-docs" class="section">
+        <h2>Tarifs & Constitution du Dossier</h2>
+        <div class="pricing-grid">
+            
+            <div class="admin-fees">
+                <h3>Frais et Détails Complémentaires</h3>
+                <ul class="features" style="margin-top: 0;">
+                    <li><i class="fas fa-euro-sign"></i> Examen Code (ETG/ETM) : **30,00€** (à régler au centre agréé).</li>
+                    <li><i class="fas fa-mobile-alt"></i> Accès Code en ligne (Code'nGo) : **15,00€**</li>
+                    <li><i class="fas fa-user-clock"></i> Évaluation de départ (obligatoire) : **47,00€**</li>
+                    <li><i class="fas fa-car-side"></i> Leçon supplémentaire : **47,00€/heure**</li>
+                </ul>
+                
+                <div class="financing-info">
+                    <h3>Modalités de Paiement</h3>
+                    <p><i class="fas fa-receipt"></i> Paiement en **3 fois MAXIMUM**.</p>
+                    <p><strong>1er versement :</strong> 500,00€ à l'inscription.</p>
+                    <p><strong>2ème versement :</strong> à la 1ère heure de conduite.</p>
+                    <p><strong>Dernier versement :</strong> 7 heures avant la fin du forfait. Le solde doit être réglé avant l'examen pratique.</p>
+                    <p>Nous acceptons les chèques, espèces et cartes bleues. (Permis à 1€/jour disponible).</p>
+                </div>
+            </div>
+            
+            <div class="documents">
+                <h3>Documents à Fournir (Dossier ANTS)</h3>
+                <ul style="list-style-type: disc; padding-left: 20px;">
+                    <li>Photocopie CNI (Recto/Verso) ou Passeport en cours de validité.</li>
+                    <li>Photo d'identité (obligatoire e-photo/code photo identité).</li>
+                    <li>Justificatif de domicile de moins de 6 mois.</li>
+                    <li>Feuille de recensement (- 17 ans) / JDC (Journée Défense et Citoyenneté) (+ 17 ans).</li>
+                    <li>ASSR 2 ou ASR.</li>
+                    <li>Attestation d'hébergement + CNI de l'hébergeant (si vous résidez chez un tiers).</li>
+                    <li>1 lettre suivie 100g et 1 enveloppe blanche timbrée.</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section prices-docs-section">
+        <h2>Contactez l'équipe Scarano</h2>
+        <div class="contact-container">
+            <div class="contact-info">
+                <h3>Où nous trouver ?</h3>
+                <p style="font-size: 1.1rem; margin-bottom: 20px;"><i class="fas fa-map-marker-alt"></i> <strong>2 Rue Jean Moulin, 27000 Évreux</strong></p>
+                <p style="font-size: 1.1rem; margin-bottom: 5px;"><i class="fas fa-phone"></i> <strong>02 77 12 75 96</strong></p>
+                <p style="font-size: 1.1rem;"><i class="fas fa-envelope"></i> contact@team-scarano.fr (exemple)</p>
+                
+                <h3 style="margin-top: 30px;">Nos Horaires</h3>
+                <ul class="hours-list">
+                    <li><strong>Lundi :</strong> 14h - 19h</li>
+                    <li><strong>Mardi :</strong> 9h-12h, 14h-19h</li>
+                    <li><strong>Mercredi :</strong> 9h-12h, 14h-18h</li>
+                    <li><strong>Jeudi :</strong> 9h-12h, 14h-19h</li>
+                    <li><strong>Vendredi :</strong> 9h-12h, 14h-19h</li>
+                    <li><strong>Samedi :</strong> 9h-12h, 14h-17h</li>
+                    <li><strong>Dimanche :</strong> Fermé</li>
+                </ul>
+            </div>
+            
+            <form class="contact-form">
+                <h3>Formulaire de Renseignements</h3>
+                <input type="text" placeholder="Votre Nom et Prénom" required>
+                <input type="tel" placeholder="Votre Téléphone" required>
+                <select required>
+                    <option value="" disabled selected>Je souhaite des informations sur...</option>
+                    <option>Permis B (Classique)</option>
+                    <option>Conduite Accompagnée (AAC)</option>
+                    <option>Permis Moto (A2)</option>
+                    <option>Permis Remorque (B96/BE)</option>
+                    <option>Autres questions</option>
+                </select>
+                <textarea rows="4" placeholder="Votre message..." required></textarea>
+                <button type="submit">Envoyer ma demande</button>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Auto-École Team Scarano - 2 Rue Jean Moulin, 27000 Évreux - Tél: 02 77 12 75 96</p>
+    </footer>
+
+</body>
+</html>
